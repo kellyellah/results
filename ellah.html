@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ellah Subi Kelly — Academic Transcript</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #111111;
+      --pop: #ff3c5f;
+      --pop-light: #fff0f3;
+      --muted: #888888;
+      --soft: #f4f4f4;
+      --border: #e0e0e0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── MARQUEE TICKER ── */
+    .ticker {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-inner {
+      display: inline-flex;
+      gap: 0;
+      animation: scroll 18s linear infinite;
+    }
+
+    .ticker-item {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0 40px;
+      color: #fff;
+    }
+
+    .ticker-item span {
+      color: var(--pop);
+      margin-right: 8px;
+    }
+
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── GRID LAYOUT ── */
+    .page {
+      display: grid;
+      grid-template-columns: 1fr 3px 1fr;
+      grid-template-rows: auto auto auto;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .vline {
+      background: var(--border);
+      grid-row: 1 / 4;
+      margin: 0 40px;
+    }
+
+    /* ── LEFT COLUMN ── */
+    .left {
+      grid-column: 1;
+      padding: 64px 0;
+      animation: riseLeft 0.7s ease both;
+    }
+
+    .issue-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--pop);
+      color: #fff;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 40px;
+    }
+
+    .name-block {
+      margin-bottom: 40px;
+    }
+
+    .name-first {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(52px, 7vw, 88px);
+      line-height: 0.9;
+      color: var(--ink);
+      display: block;
+    }
+
+    .name-middle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1;
+      color: var(--pop);
+      display: block;
+      margin: 4px 0;
+    }
+
+    .name-last {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(52px, 7vw, 88px);
+      line-height: 0.9;
+      color: var(--ink);
+      display: block;
+    }
+
+    .hero-body {
+      font-size: 13px;
+      line-height: 1.9;
+      color: var(--muted);
+      font-family: 'IBM Plex Mono', monospace;
+      max-width: 360px;
+      border-left: 3px solid var(--pop);
+      padding-left: 16px;
+      margin-bottom: 48px;
+    }
+
+    /* ── META TABLE ── */
+    .meta-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .meta-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .meta-table td {
+      padding: 14px 0;
+      font-size: 13px;
+      vertical-align: top;
+    }
+
+    .meta-table td:first-child {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      width: 110px;
+      padding-top: 16px;
+    }
+
+    .meta-table td:last-child {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    /* ── RIGHT COLUMN ── */
+    .right {
+      grid-column: 3;
+      padding: 64px 0;
+      animation: riseRight 0.7s 0.15s ease both;
+    }
+
+    .right-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .right-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── TRANSCRIPT BOX ── */
+    .transcript-box {
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    /* Diagonal stamp in corner */
+    .stamp {
+      position: absolute;
+      top: 16px; right: -28px;
+      background: var(--pop);
+      color: #fff;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 5px 40px;
+      transform: rotate(45deg);
+      transform-origin: center;
+      z-index: 2;
+    }
+
+    .transcript-box img {
+      width: 100%;
+      display: block;
+      object-fit: contain;
+      max-height: 72vh;
+    }
+
+    .placeholder {
+      padding: 80px 32px;
+      text-align: center;
+      background: var(--soft);
+    }
+
+    .placeholder-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 80px;
+      font-weight: 900;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .placeholder p {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    .placeholder code { color: var(--pop); }
+
+    /* ── ACTIONS ── */
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 3px;
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--pop);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #e02a50;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px #ff3c5f33;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 2px solid var(--ink);
+    }
+    .btn-outline:hover {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    /* ── BOTTOM BAR ── */
+    .bottom-bar {
+      border-top: 3px solid var(--ink);
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .bottom-bar-left {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .bottom-bar-right {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--pop);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes riseLeft {
+      from { opacity: 0; transform: translateX(-24px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes riseRight {
+      from { opacity: 0; transform: translateX(24px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .page {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+      }
+      .vline { display: none; }
+      .left { padding: 48px 0 24px; }
+      .right { grid-column: 1; padding: 0 0 48px; }
+      .bottom-bar { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span class="ticker-item"><span>◆</span> HND SOFTWARE ENGINEERING</span>
+      <span class="ticker-item"><span>◆</span> HIBMAT UNIVERSITY INSTITUTE OF BUEA</span>
+      <span class="ticker-item"><span>◆</span> FIRST SEMESTER · 2025–2026</span>
+      <span class="ticker-item"><span>◆</span> OFFICIAL ACADEMIC TRANSCRIPT</span>
+      <span class="ticker-item"><span>◆</span> ELLAH SUBI KELLY</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-item"><span>◆</span> HND SOFTWARE ENGINEERING</span>
+      <span class="ticker-item"><span>◆</span> HIBMAT UNIVERSITY INSTITUTE OF BUEA</span>
+      <span class="ticker-item"><span>◆</span> FIRST SEMESTER · 2025–2026</span>
+      <span class="ticker-item"><span>◆</span> OFFICIAL ACADEMIC TRANSCRIPT</span>
+      <span class="ticker-item"><span>◆</span> ELLAH SUBI KELLY</span>
+    </div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="page">
+
+    <!-- LEFT -->
+    <div class="left">
+      <div class="issue-tag">◆ &nbsp;Sem. 01 · 2025</div>
+
+      <div class="name-block">
+        <span class="name-first">ELLAH</span>
+        <span class="name-middle">Subi</span>
+        <span class="name-last">KELLY</span>
+      </div>
+
+      <p class="hero-body">
+        HND SOFTWARE ENGINEERING<br />
+        HIBMAT UNIVERSITY INSTITUTE<br />
+        OF BUEA · CAMEROON<br />
+        ACADEMIC YEAR 2025 – 2026
+      </p>
+
+      <table class="meta-table">
+        <tr>
+          <td>Programme</td>
+          <td>HND Software Engineering</td>
+        </tr>
+        <tr>
+          <td>Institution</td>
+          <td>HUIB, Buea</td>
+        </tr>
+        <tr>
+          <td>Semester</td>
+          <td>First Semester</td>
+        </tr>
+        <tr>
+          <td>Year</td>
+          <td>2025 / 2026</td>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td style="color: var(--pop);">● Active</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- VERTICAL LINE -->
+    <div class="vline"></div>
+
+    <!-- RIGHT -->
+    <div class="right">
+      <div class="right-label">Official Document</div>
+
+      <div class="transcript-box">
+        <div class="stamp">Official</div>
+        <!--
+          ✅ HOW TO ADD YOUR TRANSCRIPT:
+          1. Name your image "transcript.jpg" (or .png)
+          2. Put it in the same folder as this HTML file
+          3. Replace the placeholder below with:
+             <img src="transcript.jpg" alt="Ellah Subi Kelly Transcript" />
+        -->
+        <div class="placeholder">
+          <div class="placeholder-num">01</div>
+          <p>
+            Add <code>transcript.jpg</code> to this folder<br />
+            then swap this block for:<br /><br />
+            <code>&lt;img src="transcript.jpg" alt="Transcript" /&gt;</code>
+          </p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <!--
+          ✅ Change href="#" to href="transcript.jpg" once image is added
+        -->
+        <a href="#" class="btn btn-primary" download>↓ Download</a>
+        <a href="#" class="btn btn-outline" target="_blank">↗ Full View</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="bottom-bar">
+    <span class="bottom-bar-left">© 2026 ELLAH SUBI KELLY · ALL RIGHTS RESERVED</span>
+    <span class="bottom-bar-right">HUIB, Buea</span>
+  </div>
+
+</body>
+</html>
